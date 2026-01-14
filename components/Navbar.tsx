@@ -40,6 +40,7 @@ const Navbar: React.FC = () => {
               <Link to="/services" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Services</Link>
               <Link to="/managed-it" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Partners</Link>
               <Link to="/cybersecurity" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Cyber</Link>
+              <Link to="/about" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">About</Link>
               <Link to="/ai-assessment" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">AI Resources</Link>
             </div>
           </div>
@@ -65,6 +66,7 @@ const Navbar: React.FC = () => {
           <Link to="/services" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Services</Link>
           <Link to="/managed-it" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Partners</Link>
           <Link to="/cybersecurity" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Cyber</Link>
+          <Link to="/about" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>About Us</Link>
           <Link to="/ai-assessment" className="block text-aud-orange font-bold text-lg" onClick={() => setIsOpen(false)}>AI Consulting</Link>
           <div className="flex flex-col gap-4 pt-4">
             <button className="text-white border border-white/20 py-3 rounded-xl font-bold">Log in</button>

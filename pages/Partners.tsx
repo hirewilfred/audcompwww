@@ -3,28 +3,35 @@ import React from 'react';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 
+interface Partner {
+  name: string;
+  logo: string;
+  color: string;
+  specialty: string;
+}
+
 const Partners: React.FC = () => {
-  const partnerList = [
-    { name: "HPE", logo: "HPE", color: "#01a982" },
-    { name: "Microsoft", logo: "Microsoft", color: "#00a4ef" },
-    { name: "Lenovo", logo: "Lenovo", color: "#e2231a" },
-    { name: "Eaton", logo: "Eaton", color: "#005eb8" },
-    { name: "Dell", logo: "Dell", color: "#007db8" },
-    { name: "Cisco", logo: "Cisco", color: "#1ba0d7" },
-    { name: "Fortinet", logo: "Fortinet", color: "#ee3124" },
-    { name: "Veeam", logo: "Veeam", color: "#00b336" },
-    { name: "VMware", logo: "VMware", color: "#607078" },
-    { name: "HP", logo: "HP Inc", color: "#0096d6" },
-    { name: "APC", logo: "APC", color: "#3dcd58" },
-    { name: "Adobe", logo: "Adobe", color: "#ff0000" },
-    { name: "Autodesk", logo: "Autodesk", color: "#0696d7" },
-    { name: "Sophos", logo: "Sophos", color: "#0055ff" },
-    { name: "Acronis", logo: "Acronis", color: "#0f62fe" },
-    { name: "Datto", logo: "Datto", color: "#005eb8" },
-    { name: "Arctic Wolf", logo: "Arctic Wolf", color: "#ff0000" },
-    { name: "SentinelOne", logo: "SentinelOne", color: "#4d4d4d" },
-    { name: "Bitdefender", logo: "Bitdefender", color: "#ed1c24" },
-    { name: "SonicWall", logo: "SonicWall", color: "#ff8c00" }
+  const partnerList: Partner[] = [
+    { name: "HPE", logo: "HPE", color: "#01a982", specialty: "Enterprise Compute & Storage" },
+    { name: "Microsoft", logo: "Microsoft", color: "#00a4ef", specialty: "Cloud Productivity & OS" },
+    { name: "Lenovo", logo: "Lenovo", color: "#e2231a", specialty: "Client Devices & Servers" },
+    { name: "Eaton", logo: "Eaton", color: "#005eb8", specialty: "Power Management & UPS" },
+    { name: "Dell", logo: "Dell", color: "#007db8", specialty: "End-to-End Infrastructure" },
+    { name: "Cisco", logo: "Cisco", color: "#1ba0d7", specialty: "Networking & Connectivity" },
+    { name: "Fortinet", logo: "Fortinet", color: "#ee3124", specialty: "Network Security & Firewalls" },
+    { name: "Veeam", logo: "Veeam", color: "#00b336", specialty: "Data Backup & Recovery" },
+    { name: "VMware", logo: "VMware", color: "#607078", specialty: "Virtualization & Hybrid Cloud" },
+    { name: "HP", logo: "HP Inc", color: "#0096d6", specialty: "Printing & Personal Systems" },
+    { name: "APC", logo: "APC", color: "#3dcd58", specialty: "Critical Power & Cooling" },
+    { name: "Adobe", logo: "Adobe", color: "#ff0000", specialty: "Creative & Digital Media" },
+    { name: "Autodesk", logo: "Autodesk", color: "#0696d7", specialty: "Engineering & CAD Software" },
+    { name: "Sophos", logo: "Sophos", color: "#0055ff", specialty: "Endpoint Security & XDR" },
+    { name: "Acronis", logo: "Acronis", color: "#0f62fe", specialty: "Cyber Protection & Storage" },
+    { name: "Datto", logo: "Datto", color: "#005eb8", specialty: "Business Continuity & RMM" },
+    { name: "Arctic Wolf", logo: "Arctic Wolf", color: "#ff0000", specialty: "Managed Detection & Response" },
+    { name: "SentinelOne", logo: "SentinelOne", color: "#4d4d4d", specialty: "AI-Powered Cyber Defense" },
+    { name: "Bitdefender", logo: "Bitdefender", color: "#ed1c24", specialty: "Advanced Threat Protection" },
+    { name: "SonicWall", logo: "SonicWall", color: "#ff8c00", specialty: "Next-Gen Firewall Security" }
   ];
 
   // Double the list for infinite scroll effect
@@ -64,7 +71,7 @@ const Partners: React.FC = () => {
               100% { transform: translateX(-50%); }
             }
             .animate-scroll {
-              animation: infiniteScroll 40s linear infinite;
+              animation: infiniteScroll 60s linear infinite;
               display: flex;
               width: max-content;
             }
@@ -74,42 +81,61 @@ const Partners: React.FC = () => {
           `}
         </style>
         
-        <div className="animate-scroll gap-8 px-4">
+        {/* Row 1: Forward Scroll */}
+        <div className="animate-scroll gap-8 px-4 mb-8">
           {fullList.map((partner, idx) => (
             <div 
               key={idx} 
-              className="w-[280px] h-[180px] glass-panel rounded-[2rem] border-white/5 flex flex-col items-center justify-center p-8 group transition-all duration-500 hover:border-white/20 hover:scale-105"
+              className="w-[280px] h-[180px] glass-panel rounded-[2.5rem] border-white/5 flex flex-col items-center justify-center p-8 group transition-all duration-700 hover:border-white/20 hover:scale-105 relative cursor-default"
             >
-              <div 
-                className="text-2xl font-black tracking-tighter text-slate-500 group-hover:text-white transition-all duration-500 mb-2"
-                style={{ color: 'inherit' }}
-              >
+              {/* Tooltip */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-top-12 transition-all duration-500 bg-white text-[#0d0e25] px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest pointer-events-none whitespace-nowrap shadow-2xl z-20">
+                {partner.specialty}
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+              </div>
+
+              <div className="text-2xl font-black tracking-tighter text-slate-500 group-hover:text-white transition-all duration-500 mb-2 relative z-10">
                 {partner.logo}
               </div>
-              <div className="h-1 w-0 group-hover:w-12 transition-all duration-500 rounded-full" style={{ backgroundColor: partner.color }}></div>
+              <div className="h-1 w-0 group-hover:w-16 transition-all duration-700 rounded-full relative z-10" style={{ backgroundColor: partner.color }}></div>
               
-              {/* Subtle background glow on hover */}
+              {/* Subtle dynamic brand background glow on hover */}
               <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-[2rem]" 
+                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-[2.5rem] blur-xl scale-90 group-hover:scale-100" 
+                style={{ backgroundColor: partner.color }}
+              ></div>
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 rounded-[2.5rem]" 
                 style={{ backgroundColor: partner.color }}
               ></div>
             </div>
           ))}
         </div>
 
-        {/* Second Row scrolling reverse for dynamic look */}
-        <div className="animate-scroll gap-8 px-4 mt-8" style={{ animationDirection: 'reverse' }}>
+        {/* Row 2: Reverse Scroll */}
+        <div className="animate-scroll gap-8 px-4" style={{ animationDirection: 'reverse' }}>
           {fullList.map((partner, idx) => (
             <div 
               key={`rev-${idx}`} 
-              className="w-[280px] h-[180px] glass-panel rounded-[2rem] border-white/5 flex flex-col items-center justify-center p-8 group transition-all duration-500 hover:border-white/20 hover:scale-105"
+              className="w-[280px] h-[180px] glass-panel rounded-[2.5rem] border-white/5 flex flex-col items-center justify-center p-8 group transition-all duration-700 hover:border-white/20 hover:scale-105 relative cursor-default"
             >
-              <div className="text-2xl font-black tracking-tighter text-slate-500 group-hover:text-white transition-all duration-500 mb-2">
+              {/* Tooltip */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-top-12 transition-all duration-500 bg-white text-[#0d0e25] px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest pointer-events-none whitespace-nowrap shadow-2xl z-20">
+                {partner.specialty}
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+              </div>
+
+              <div className="text-2xl font-black tracking-tighter text-slate-500 group-hover:text-white transition-all duration-500 mb-2 relative z-10">
                 {partner.logo}
               </div>
-              <div className="h-1 w-0 group-hover:w-12 transition-all duration-500 rounded-full" style={{ backgroundColor: partner.color }}></div>
+              <div className="h-1 w-0 group-hover:w-16 transition-all duration-700 rounded-full relative z-10" style={{ backgroundColor: partner.color }}></div>
+              
               <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-[2rem]" 
+                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-[2.5rem] blur-xl scale-90 group-hover:scale-100" 
+                style={{ backgroundColor: partner.color }}
+              ></div>
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 rounded-[2.5rem]" 
                 style={{ backgroundColor: partner.color }}
               ></div>
             </div>
@@ -143,7 +169,7 @@ const Partners: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-aud-orange rounded-full flex items-center justify-center text-white font-bold text-center p-4 shadow-xl rotate-12">
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-aud-orange rounded-full flex items-center justify-center text-white font-bold text-center p-4 shadow-xl rotate-12 group-hover:rotate-0 transition-transform duration-700">
                 Live Testing
               </div>
             </div>

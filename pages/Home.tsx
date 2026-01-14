@@ -62,9 +62,8 @@ const Home: React.FC = () => {
       desc: "Custom LLM deployments and predictive analytics for mission-critical operations. Bridge the gap between raw data and business intelligence.",
       ctaPrimary: "Start AI Assessment",
       ctaLink: "/ai-assessment",
-      color: "blue",
-      bgImage: "https://images.unsplash.com/photo-1620712943543-bcc4628c7007?q=80&w=2000&auto=format&fit=crop",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200"
+      accent: "bg-[#5c7cff]",
+      bgImage: "https://images.unsplash.com/photo-1620712943543-bcc4628c7007?q=80&w=2000&auto=format&fit=crop"
     },
     {
       badge: "Cyber Defense Experts",
@@ -72,9 +71,8 @@ const Home: React.FC = () => {
       desc: "Zero-trust architecture and real-time threat mitigation. We protect your enterprise from AI-driven cyber attacks before they strike.",
       ctaPrimary: "Secure Your Network",
       ctaLink: "/cybersecurity",
-      color: "orange",
-      bgImage: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2000&auto=format&fit=crop",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200"
+      accent: "bg-aud-orange",
+      bgImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop"
     },
     {
       badge: "Managed IT Partner",
@@ -82,9 +80,8 @@ const Home: React.FC = () => {
       desc: "Proactive monitoring, cloud management, and full-spectrum support. Engineering resilient digital systems for over three decades.",
       ctaPrimary: "Explore Managed IT",
       ctaLink: "/managed-it",
-      color: "emerald",
-      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=1200"
+      accent: "bg-emerald-600",
+      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=2000&auto=format&fit=crop"
     }
   ];
 
@@ -153,138 +150,150 @@ const Home: React.FC = () => {
         description="Audcomp: Your partner for resilient IT, cybersecurity, and advanced AI infrastructure."
       />
       
-      {/* Background Layers */}
+      {/* Dynamic Immersive Background System */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
-            className={`absolute inset-0 transition-opacity duration-1500 ease-in-out ${idx === currentHeroSlide ? 'opacity-30' : 'opacity-0'}`}
+            className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${idx === currentHeroSlide ? 'opacity-40 scale-100 rotate-0' : 'opacity-0 scale-110 rotate-1'}`}
           >
-            <img src={slide.bgImage} alt="" className="w-full h-full object-cover scale-110 blur-[2px]" />
-            <div className="absolute inset-0 bg-[#0d0e25]/60"></div>
+            <img src={slide.bgImage} alt="" className="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0d0e25] via-[#0d0e25]/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e25] to-transparent"></div>
           </div>
         ))}
       </div>
 
-      {/* Hero Section (DARK) */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative">
-          <div className="lg:w-1/2 text-left min-h-[500px] flex flex-col justify-center">
-            <div className="relative overflow-hidden h-[300px] sm:h-[260px] lg:h-[320px]">
+      {/* Reworked Hero Section - Full Width Immersive */}
+      <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 px-6 z-10">
+        <div className="max-w-7xl mx-auto w-full relative">
+          <div className="max-w-3xl">
+            <div className="relative overflow-hidden h-[380px] sm:h-[340px] lg:h-[420px]">
               {heroSlides.map((slide, idx) => (
-                <div key={idx} className={`absolute inset-0 transition-all duration-1000 ${idx === currentHeroSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-8">
-                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${idx === 1 ? 'bg-aud-orange' : idx === 2 ? 'bg-emerald-500' : 'bg-[#5c7cff]'} text-white`}>
+                <div 
+                  key={idx} 
+                  className={`absolute inset-0 transition-all duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${idx === currentHeroSlide ? 'opacity-100 translate-y-0 filter-none' : 'opacity-0 translate-y-12 blur-sm pointer-events-none'}`}
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full mb-10 backdrop-blur-md">
+                    <span className={`text-[10px] font-black px-2 py-0.5 rounded ${slide.accent} text-white uppercase tracking-widest shadow-lg`}>
                       {idx === 0 ? 'AI' : idx === 1 ? 'SEC' : 'IT'}
                     </span>
-                    <span className="text-xs font-medium text-slate-400 tracking-tight">{slide.badge}</span>
+                    <span className="text-xs font-bold text-slate-200 tracking-tight uppercase tracking-widest">{slide.badge}</span>
                   </div>
-                  <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-8 tracking-tight text-gradient">
-                    {slide.title}
+                  
+                  <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-[0.95] mb-10 tracking-tighter text-gradient">
+                    {slide.title.split(' ').map((word, i) => (
+                      <span key={i} className="inline-block mr-4">
+                        {word === "weeks" || word === "assets" || word === "Services" ? (
+                          <span className={`italic ${idx === 1 ? 'text-aud-orange' : idx === 2 ? 'text-emerald-500' : 'text-aud-blue'}`}>{word}</span>
+                        ) : word}
+                      </span>
+                    ))}
                   </h1>
-                  <p className="text-lg text-slate-400 max-w-lg mb-12 leading-relaxed">{slide.desc}</p>
+                  
+                  <p className="text-xl text-slate-300 max-w-xl mb-12 leading-relaxed font-medium drop-shadow-sm">
+                    {slide.desc}
+                  </p>
                 </div>
               ))}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Link to={heroSlides[currentHeroSlide].ctaLink} className={`px-8 py-4 rounded-xl font-bold shadow-2xl transition-all duration-500 text-center ${currentHeroSlide === 1 ? 'bg-aud-orange' : currentHeroSlide === 2 ? 'bg-emerald-600' : 'bg-white text-[#0d0e25]'} text-white hover:opacity-90`}>
-                {heroSlides[currentHeroSlide].ctaPrimary}
-              </Link>
-              <Link to="/services" className="glass-panel text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all text-center">View Solutions</Link>
-            </div>
-          </div>
 
-          <div className="lg:w-1/2 relative group w-full">
-            <div className={`absolute -inset-1 rounded-[2rem] blur opacity-20 transition-all duration-1000 bg-gradient-to-r ${currentHeroSlide === 0 ? 'from-blue-500 to-indigo-600' : currentHeroSlide === 1 ? 'from-orange-500 to-red-600' : 'from-emerald-500 to-teal-600'}`}></div>
-            <div className="relative glass-panel rounded-[2rem] overflow-hidden border border-white/10 p-2 h-[500px]">
-              <div className="bg-[#0f112a] rounded-[1.8rem] h-full p-8 flex flex-col justify-between">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-slate-800/80 border border-white/10 flex items-center justify-center">
-                      <i className={`fas ${currentHeroSlide === 0 ? 'fa-brain' : currentHeroSlide === 1 ? 'fa-shield-halved' : 'fa-server'} text-xs text-white`}></i>
-                    </div>
-                    <p className="text-sm font-bold text-white uppercase tracking-widest">{heroSlides[currentHeroSlide].badge}</p>
-                  </div>
-                  <div className={`w-2 h-2 rounded-full animate-pulse ${currentHeroSlide === 0 ? 'bg-blue-500' : currentHeroSlide === 1 ? 'bg-aud-orange' : 'bg-emerald-500'}`}></div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="glass-panel p-6 rounded-2xl border-white/5">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-2">Throughput</p>
-                    <p className="text-3xl font-bold text-white">4.2ms</p>
-                  </div>
-                  <div className="glass-panel p-6 rounded-2xl border-white/5">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-2">Integrity</p>
-                    <p className="text-3xl font-bold text-white">100%</p>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-6 mt-12">
+              <Link 
+                to={heroSlides[currentHeroSlide].ctaLink} 
+                className={`px-10 py-5 rounded-2xl font-black text-lg shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 text-center flex items-center justify-center gap-3 ${currentHeroSlide === 1 ? 'bg-aud-orange hover:bg-orange-500' : currentHeroSlide === 2 ? 'bg-emerald-600 hover:bg-emerald-500' : 'bg-white text-[#0d0e25] hover:bg-slate-100'} text-white group`}
+              >
+                <span>{heroSlides[currentHeroSlide].ctaPrimary}</span>
+                <i className="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+              </Link>
+              <Link to="/services" className="glass-panel text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-white/10 transition-all text-center border-white/20 backdrop-blur-xl">
+                View Solutions
+              </Link>
+            </div>
+
+            {/* Slide Navigation Dots */}
+            <div className="flex gap-4 mt-20">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentHeroSlide(i)}
+                  className={`h-1.5 rounded-full transition-all duration-500 ${i === currentHeroSlide ? `w-12 ${heroSlides[i].accent}` : 'w-6 bg-white/20 hover:bg-white/40'}`}
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Legacy Section (WHITE) */}
-      <section className="bg-white text-slate-900 relative z-20 pt-24 pb-24 rounded-t-[4rem]">
+      <section className="bg-white text-slate-900 relative z-20 pt-32 pb-32 rounded-t-[5rem] shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div>
-              <span className="inline-block px-4 py-1 rounded-full bg-aud-blue/5 text-aud-blue font-bold text-[10px] uppercase tracking-[0.2em] mb-6">Why Audcomp?</span>
-              <h2 className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-8">
-                38+ Years of <span className="text-aud-blue italic">Technical Legacy.</span>
+              <span className="inline-block px-5 py-2 rounded-full bg-aud-blue/5 text-aud-blue font-black text-[10px] uppercase tracking-[0.3em] mb-8">Why Audcomp?</span>
+              <h2 className="text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] mb-10">
+                38+ Years of <br /><span className="text-aud-blue italic">Technical Legacy.</span>
               </h2>
-              <div className="space-y-6 text-lg text-slate-500 leading-relaxed">
+              <div className="space-y-8 text-xl text-slate-500 leading-relaxed font-medium">
                 <p>Since 1986, we've delivered solutions that exceed expectations.</p>
-                <p>Our team specializes in designing custom, reliable IT frameworks for modern enterprise needs.</p>
+                <p>Our team specializes in designing custom, reliable IT frameworks for modern enterprise needs across Canada.</p>
               </div>
             </div>
-            <div className="relative glass-panel bg-slate-50 p-12 rounded-[3rem] border-slate-100 shadow-xl overflow-hidden group">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-aud-blue/5 rounded-bl-[100px] flex items-center justify-center pt-2 pl-4">
-                  <i className="fas fa-award text-aud-blue/20 text-5xl"></i>
+            <div className="relative glass-panel bg-slate-50 p-16 rounded-[4rem] border-slate-100 shadow-2xl overflow-hidden group">
+               <div className="absolute top-0 right-0 w-40 h-40 bg-aud-blue/5 rounded-bl-[120px] flex items-center justify-center pt-2 pl-4">
+                  <i className="fas fa-award text-aud-blue/10 text-7xl"></i>
                </div>
                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-8">
-                    <span className="text-7xl font-black text-slate-200 group-hover:text-aud-orange transition-colors">25</span>
-                    <div className="h-10 w-px bg-slate-200"></div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400">CDN Top Rank</p>
+                  <div className="flex items-center gap-6 mb-10">
+                    <span className="text-8xl font-black text-slate-200 group-hover:text-aud-orange transition-colors">25</span>
+                    <div className="h-16 w-px bg-slate-200"></div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">CDN Magazine</p>
+                      <p className="text-sm font-bold text-slate-900">Top Ranked Partner</p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 leading-tight">Recognized as a Top 25 Solution Provider for over a decade.</h3>
+                  <h3 className="text-3xl font-extrabold text-slate-900 leading-tight">Recognized as a Top 25 Solution Provider for over a decade.</h3>
                </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Bento Section (DARK) - Imagery Focused */}
-      <section className="relative z-20 py-32 px-6">
+      {/* Services Bento Section (DARK) */}
+      <section className="relative z-20 py-40 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 group glass-panel rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[400px] border-white/5 hover:border-white/10 transition-all relative overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="md:col-span-2 group glass-panel rounded-[3.5rem] p-12 flex flex-col justify-between min-h-[450px] border-white/10 hover:border-white/20 transition-all relative overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200" 
-                className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms]"
                 alt="AI Strategy"
               />
               <div className="relative z-10">
-                <h3 className="text-3xl font-bold mb-4 text-white">AI Consulting & Deployment</h3>
-                <p className="text-slate-400 text-lg max-w-md">Bridging raw data and intelligence. We build and deploy custom LLMs.</p>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-aud-blue mb-4 block">Strategic AI</span>
+                <h3 className="text-5xl font-black mb-6 text-white tracking-tighter">AI Consulting & Deployment</h3>
+                <p className="text-slate-400 text-xl max-w-md font-medium leading-relaxed">Bridging raw data and intelligence. We build and deploy custom LLMs for high-security environments.</p>
               </div>
-              <Link to="/ai-assessment" className="relative z-10 flex items-center gap-3 font-bold text-aud-blue group/btn">
+              <Link to="/ai-assessment" className="relative z-10 flex items-center gap-4 font-black text-aud-blue text-lg group/btn mt-8">
                 <span>Explore AI Strategy</span>
-                <i className="fas fa-arrow-right text-xs group-hover/btn:translate-x-2 transition-transform"></i>
+                <div className="w-12 h-12 rounded-full border border-aud-blue flex items-center justify-center group-hover/btn:bg-aud-blue group-hover/btn:text-white transition-all">
+                  <i className="fas fa-arrow-right text-sm"></i>
+                </div>
               </Link>
             </div>
-            <div className="group rounded-[2.5rem] p-10 text-white flex flex-col justify-between border border-white/5 relative overflow-hidden bg-slate-900/50 backdrop-blur">
+            <div className="group rounded-[3.5rem] p-12 text-white flex flex-col justify-between border border-white/10 relative overflow-hidden bg-slate-900/50 backdrop-blur-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" 
-                className="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms]"
                 alt="Cyber Defense"
               />
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold mb-4">Cyber Defense</h3>
-                <p className="text-slate-400 text-sm mb-8">Military-grade audits and real-time mitigation.</p>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-aud-orange mb-4 block">Cyber Defense</span>
+                <h3 className="text-3xl font-black mb-6 tracking-tighter">ZeroTrust Protection</h3>
+                <p className="text-slate-400 text-base mb-8 font-medium leading-relaxed">Military-grade audits and real-time mitigation for mission-critical digital assets.</p>
               </div>
-              <Link to="/cybersecurity" className="relative z-10 bg-white text-slate-900 w-12 h-12 rounded-full flex items-center justify-center hover:bg-aud-orange hover:text-white transition-colors">
-                <i className="fas fa-lock"></i>
+              <Link to="/cybersecurity" className="relative z-10 bg-white text-slate-900 w-16 h-16 rounded-3xl flex items-center justify-center hover:bg-aud-orange hover:text-white transition-all duration-500 shadow-2xl">
+                <i className="fas fa-lock text-xl"></i>
               </Link>
             </div>
           </div>
@@ -292,19 +301,19 @@ const Home: React.FC = () => {
       </section>
 
       {/* Partners / Testimonials Section (WHITE) */}
-      <section className="bg-white text-slate-900 relative z-20 pt-24 pb-32 rounded-t-[4rem]">
+      <section className="bg-white text-slate-900 relative z-20 pt-32 pb-40 rounded-t-[5rem]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-20 text-center">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6 block">Success Stories</span>
-            <h2 className="text-5xl font-bold tracking-tight">Verified <span className="text-aud-blue italic">Partner Impact.</span></h2>
+          <div className="mb-24 text-center">
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 block">Operational Trust</span>
+            <h2 className="text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9]">Verified <span className="text-aud-blue italic">Partner Impact.</span></h2>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-12">
             {partners.map((partner, i) => (
-              <div key={i} className="h-full bg-slate-50 rounded-[2rem] p-10 border border-slate-100 flex flex-col justify-between hover:shadow-xl transition-all">
-                <p className="text-slate-600 leading-relaxed italic mb-12">"{partner.quote}"</p>
-                <div>
-                  <p className="text-2xl font-normal text-slate-900 mb-1" style={{ fontFamily: 'Dancing Script, cursive, serif' }}>{partner.name}</p>
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-slate-400">{partner.role}</p>
+              <div key={i} className="h-full bg-slate-50 rounded-[4rem] p-12 border border-slate-100 flex flex-col justify-between hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-700 hover:-translate-y-4">
+                <p className="text-slate-600 leading-relaxed italic mb-16 text-xl font-medium">"{partner.quote}"</p>
+                <div className="pt-8 border-t border-slate-200">
+                  <p className="text-4xl font-normal text-slate-900 mb-2" style={{ fontFamily: 'Dancing Script, cursive, serif' }}>{partner.name}</p>
+                  <p className="text-[10px] uppercase tracking-[0.4em] font-black text-slate-400">{partner.role}</p>
                 </div>
               </div>
             ))}
@@ -312,40 +321,43 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Events Carousel (DARK) - Imagery Focused */}
-      <section className="py-32 px-6 relative z-10">
+      {/* Events Carousel (DARK) */}
+      <section className="py-40 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">Industry Events</h2>
-              <p className="text-slate-400 max-w-md">Join us at the intersection of security and automation.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-aud-blue mb-4 block">Upcoming Roadshow</span>
+              <h2 className="text-6xl font-black text-white tracking-tighter leading-[0.9]">Industry <span className="italic text-aud-orange">Events.</span></h2>
             </div>
-            <div className="flex gap-4">
-              <button onClick={prevEvent} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+            <div className="flex gap-6">
+              <button onClick={prevEvent} className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-white/30 transition-all">
                 <i className="fas fa-chevron-left text-sm"></i>
               </button>
-              <button onClick={nextEvent} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors">
+              <button onClick={nextEvent} className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 hover:border-white/30 transition-all">
                 <i className="fas fa-chevron-right text-sm"></i>
               </button>
             </div>
           </div>
           <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-1000 gap-8" style={{ transform: `translateX(calc(-${currentEventIndex * 100}% - ${currentEventIndex * 2}rem))` }}>
+            <div className="flex transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] gap-10" style={{ transform: `translateX(calc(-${currentEventIndex * 100}% - ${currentEventIndex * 2.5}rem))` }}>
               {events.map((event, i) => (
-                <div key={i} className="min-w-full md:min-w-[calc(33.333%-1.33rem)] group">
-                  <div className="glass-panel rounded-[2.5rem] overflow-hidden border border-white/5 h-full flex flex-col hover:border-white/20 transition-all">
-                    <div className="h-60 relative overflow-hidden">
+                <div key={i} className="min-w-full md:min-w-[calc(33.333%-1.66rem)] group">
+                  <div className="glass-panel rounded-[4rem] overflow-hidden border border-white/5 h-full flex flex-col hover:border-white/20 transition-all duration-700 shadow-2xl">
+                    <div className="h-72 relative overflow-hidden">
                       <img 
                         src={event.image} 
-                        className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1500ms]"
                         alt={event.title}
                       />
                       <div className={`absolute inset-0 bg-gradient-to-br ${event.color} mix-blend-multiply`}></div>
                     </div>
-                    <div className="p-10 flex flex-col flex-grow">
-                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">{event.date}</p>
-                      <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                      <p className="text-slate-500 text-sm mb-12 flex-grow">{event.description}</p>
+                    <div className="p-12 flex flex-col flex-grow">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-6">{event.date}</p>
+                      <h3 className="text-2xl font-black text-white mb-4 tracking-tight">{event.title}</h3>
+                      <p className="text-slate-500 text-base mb-12 flex-grow font-medium leading-relaxed">{event.description}</p>
+                      <div className="pt-6 border-t border-white/5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        {event.location}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -356,8 +368,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* Animated Counter Footer (DARK) */}
-      <section className="pb-24 px-6 relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="pb-32 px-6 relative z-10 border-t border-white/5 pt-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12">
           {[
             { label: "Founded", val: "1986" },
             { label: "Avg Uptime", val: "99.9%" },

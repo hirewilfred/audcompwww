@@ -6,6 +6,7 @@ import AIConfigurator from './pages/AIConfigurator';
 import Partners from './pages/Partners';
 import Cybersecurity from './pages/Cybersecurity';
 import Services from './pages/Services';
+import About from './pages/About';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/ai-assessment" element={<AIConfigurator />} />
           <Route path="/managed-it" element={<Partners />} />
           <Route path="/cybersecurity" element={<Cybersecurity />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
       <Footer />
