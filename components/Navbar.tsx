@@ -21,9 +21,8 @@ const Navbar: React.FC = () => {
               <img 
                 src="https://raw.githubusercontent.com/Audcomp/Audcomp/refs/heads/main/Audcomp_Logo_White_Horizontal.png" 
                 alt="Audcomp Logo" 
-                className="h-8 w-auto object-contain"
+                className="h-7 md:h-8 w-auto object-contain"
                 onError={(e) => {
-                  // Fallback if the raw URL is unreachable
                   const target = e.target as HTMLImageElement;
                   target.style.display = 'none';
                   const parent = target.parentElement;
@@ -39,7 +38,7 @@ const Navbar: React.FC = () => {
             
             <div className="hidden lg:flex items-center space-x-8">
               <Link to="/services" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Services</Link>
-              <Link to="/managed-it" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Managed IT</Link>
+              <Link to="/managed-it" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Partners</Link>
               <Link to="/cybersecurity" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Cyber</Link>
               <Link to="/ai-assessment" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">AI Resources</Link>
             </div>
@@ -64,7 +63,7 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="md:hidden bg-[#0d0e25] border-t border-white/10 py-6 px-6 space-y-6 shadow-2xl">
           <Link to="/services" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Services</Link>
-          <Link to="/managed-it" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Managed IT</Link>
+          <Link to="/managed-it" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Partners</Link>
           <Link to="/cybersecurity" className="block text-slate-300 text-lg" onClick={() => setIsOpen(false)}>Cyber</Link>
           <Link to="/ai-assessment" className="block text-aud-orange font-bold text-lg" onClick={() => setIsOpen(false)}>AI Consulting</Link>
           <div className="flex flex-col gap-4 pt-4">

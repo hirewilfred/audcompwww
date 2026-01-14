@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import AIConfigurator from './pages/AIConfigurator';
-import ManagedIT from './pages/ManagedIT';
+import Partners from './pages/Partners';
 import Cybersecurity from './pages/Cybersecurity';
 import Services from './pages/Services';
 import Navbar from './components/Navbar';
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/ai-assessment" element={<AIConfigurator />} />
-          <Route path="/managed-it" element={<ManagedIT />} />
+          <Route path="/managed-it" element={<Partners />} />
           <Route path="/cybersecurity" element={<Cybersecurity />} />
         </Routes>
       </main>

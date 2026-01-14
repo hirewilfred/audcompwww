@@ -7,14 +7,10 @@ const Footer: React.FC = () => {
   const [lastCheck, setLastCheck] = useState<string>(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
   useEffect(() => {
-    // Initial sequence to simulate startup
     const timer1 = setTimeout(() => setStatus('operational'), 2000);
-    
-    // Simulate periodic "heartbeat" checks
     const interval = setInterval(() => {
       setStatus('checking');
       setLastCheck(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-      
       setTimeout(() => {
         setStatus(Math.random() > 0.8 ? 'optimizing' : 'operational');
       }, 1500);
@@ -65,10 +61,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-xs uppercase tracking-widest text-slate-500 mb-6">Product</h4>
             <ul className="space-y-4 text-sm text-slate-400 font-medium">
-              <li><Link to="/managed-it" className="hover:text-white transition-colors">Managed IT</Link></li>
+              <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
               <li><Link to="/cybersecurity" className="hover:text-white transition-colors">Cybersecurity</Link></li>
+              <li><Link to="/managed-it" className="hover:text-white transition-colors">Our Partners</Link></li>
               <li><Link to="/ai-assessment" className="hover:text-white transition-colors">AI Consulting</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cloud Ops</a></li>
             </ul>
           </div>
 
